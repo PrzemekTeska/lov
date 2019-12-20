@@ -6,19 +6,23 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import androidx.annotation.Nullable;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
-    public DataBaseHelper(@Nullable Context context) {
-        super(context, "Login.db", null, 1);
+
+    private static final String DBName = "Login.db";
+    private static final String COLUMN_name = "user_name";
+    private static final String COLUMN_mail = "email";
+    private static final String COLUMN_pass = "password";
+    private static final String TABLE_NAME = "user";
+
+    public DataBaseHelper(Context context) {
+        super(context, DBName, null, 1);
+        getReadableDatabase();
     }
 
     @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("Create table user(user_name text PRIMARY KEY, email text ,password text)");
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL("CREATE TABLE " + TABLE_NAME + "(" + COLUMN_name + " TEXT PRIMARY KEY," + COLUMN_mail + " TEXT," + COLUMN_pass + " TEXT)");
     }
 
     @Override
@@ -26,41 +30,50 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("drop table if exists user");
     }
 
-    public boolean insertIntoDataBase(String userName,String email,String password){
-        SQLiteDatabase db = this.getWritableDatabase();
+    public boolean insertIntoDataBase(String userName, String email, String password) {
+        SQLiteDatabase database = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("user_name",userName);
-        contentValues.put("email",email);
-        contentValues.put("password",password);
-        long ins = db.insert("user",null, contentValues);
-        if(ins==-1)return false;
+        contentValues.put(COLUMN_name, userName);
+        contentValues.put(COLUMN_mail, email);
+        contentValues.put(COLUMN_pass, password);
+        long ins = database.insert(TABLE_NAME, null, contentValues);
+        if (ins == -1) return false;
         else {
             return true;
         }
     }
 
-    public boolean checkUserName(String userName){
-        SQLiteDatabase database =this.getReadableDatabase();
-        Cursor cursor = database.rawQuery("SELECT * FROM user WHERE user_name=?",new String[]{userName});
-        if(cursor.getCount()>0)return false;
+    public boolean checkUserName(String userName) {
+        SQLiteDatabase database = this.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT * FROM user WHERE user_name=?", new String[]{userName});
+        if (cursor.getCount() > 0) return false;
         else {
             return true;
         }
     }
 
-    public boolean checkEmail(String emailCheck){
-        SQLiteDatabase database =this.getReadableDatabase();
-        Cursor cursor = database.rawQuery("SELECT * FROM user WHERE email=?",new String[]{emailCheck});
-        if(cursor.getCount()>0)return false;
+    public boolean passwordCheck(String password) {
+        SQLiteDatabase database = this.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT * FROM user WHERE password=?", new String[]{password});
+        if (cursor.getCount() > 0) return false;
         else {
             return true;
         }
     }
 
-    public boolean checkPassword(String passwordCheck, String userName){
-        SQLiteDatabase database =this.getReadableDatabase();
-        Cursor cursor = database.rawQuery("SELECT password FROM user WHERE user_name = ? and password=?",new String[]{userName,passwordCheck});
-        if(cursor.getCount()>0)return false;
+    public boolean checkEmail(String emailCheck) {
+        SQLiteDatabase database = this.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT * FROM user WHERE email=?", new String[]{emailCheck});
+        if (cursor.getCount() > 0) return false;
+        else {
+            return true;
+        }
+    }
+
+    public boolean checkPassword(String passwordCheck, String userName) {
+        SQLiteDatabase database = this.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT password FROM user WHERE user_name = ? and password=?", new String[]{userName, passwordCheck});
+        if (cursor.getCount() <= 0) return false;
         else {
             return true;
         }
