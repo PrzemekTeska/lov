@@ -15,6 +15,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_pass = "password";
     private static final String TABLE_NAME = "user";
 
+
+
     public DataBaseHelper(Context context) {
         super(context, DBName, null, 1);
         getReadableDatabase();
