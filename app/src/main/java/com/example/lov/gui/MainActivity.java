@@ -1,7 +1,9 @@
-package com.example.lov;
+package com.example.lov.gui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.lov.R;
 
 
 public class MainActivity extends AppCompatActivity {

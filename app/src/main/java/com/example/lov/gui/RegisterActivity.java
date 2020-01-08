@@ -1,4 +1,4 @@
-package com.example.lov;
+package com.example.lov.gui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.lov.DB.DataBaseCreater;
+import com.example.lov.R;
+
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -18,7 +21,7 @@ import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    DataBaseHelper dataBaseHelper;
+    DataBaseCreater dataBaseCreater;
     EditText password, passwordRep, userName, email, emailRep;
     TextView goToLogin;
     Button registerBtn;
@@ -52,7 +55,7 @@ public class RegisterActivity extends AppCompatActivity {
         password = findViewById(R.id.password);
         passwordRep = findViewById(R.id.repPassword);
         goToLogin = findViewById(R.id.textView6);
-        dataBaseHelper = new DataBaseHelper(this);
+        dataBaseCreater = new DataBaseCreater(this);
     }
 
     public void register(View view) {
@@ -77,11 +80,11 @@ public class RegisterActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Username and password cant be the same", Toast.LENGTH_SHORT).show();
         else if (pass.equals(passRep) && mail.equals(mailRep)) {
             try {
-                Boolean checkUser = dataBaseHelper.checkUserName(user);
+                Boolean checkUser = dataBaseCreater.checkUserName(user);
                 if (checkUser) {
-                    Boolean checkEmail = dataBaseHelper.checkEmail(mail);
+                    Boolean checkEmail = dataBaseCreater.checkEmail(mail);
                     if (checkEmail) {
-                        Boolean insert = dataBaseHelper.insertIntoDataBase(user, mail, SHA1(pass));
+                        Boolean insert = dataBaseCreater.insertUserIntoDataBase(user, mail, SHA1(pass));
                         if (!insert)
                             Toast.makeText(getApplicationContext(), "Something went wrong please try again", Toast.LENGTH_LONG).show();
                         else {
@@ -108,6 +111,4 @@ public class RegisterActivity extends AppCompatActivity {
         }
         return sb.toString();
     }
-
-
 }
