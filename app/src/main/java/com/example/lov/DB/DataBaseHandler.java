@@ -9,7 +9,7 @@ import com.example.lov.DB.controller.GoalDBController;
 import com.example.lov.DB.controller.UserDBController;
 
 
-public class DataBaseCreater extends SQLiteOpenHelper {
+public class DataBaseHandler extends SQLiteOpenHelper {
     private GoalDBController goalDBController=new GoalDBController();
     private UserDBController userDBController=new UserDBController();
     private ActivitiesDBController activitiesDBController= new ActivitiesDBController();
@@ -30,7 +30,7 @@ public class DataBaseCreater extends SQLiteOpenHelper {
     private static final String COLUMN_GOAL_DESCRIPTION = "goal_description";
     private static final String COLUMN_GOAL_USERNAME = "username";
 
-    public DataBaseCreater(Context context) {
+    public DataBaseHandler(Context context) {
         super(context, DBName, null, 1);
         getReadableDatabase();
     }

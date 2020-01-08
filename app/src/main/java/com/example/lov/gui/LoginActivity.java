@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.lov.DB.DataBaseCreater;
+import com.example.lov.DB.DataBaseHandler;
 import com.example.lov.R;
 
 import java.io.UnsupportedEncodingException;
@@ -19,7 +19,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class LoginActivity extends AppCompatActivity {
 
-    DataBaseCreater dataBaseCreater;
+    DataBaseHandler dataBaseHandler;
     EditText password, userName;
     Button loginBtn;
     TextView goToRegister;
@@ -51,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
         goToRegister = findViewById(R.id.textView6);
         userName = findViewById(R.id.userName);
         password = findViewById(R.id.password);
-        dataBaseCreater = new DataBaseCreater(this);
+        dataBaseHandler = new DataBaseHandler(this);
     }
 
     public void logIn(View view) {
@@ -61,12 +61,12 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Fields are empty", Toast.LENGTH_SHORT).show();
         else {
             try {
-                Boolean checkUser = dataBaseCreater.checkUserName(user);
+                Boolean checkUser = dataBaseHandler.checkUserName(user);
                 if (!checkUser) {
-                    Boolean checkPass = dataBaseCreater.checkPassword(SHA1(pass), user);
+                    Boolean checkPass = dataBaseHandler.checkPassword(SHA1(pass), user);
                     if (checkPass) {
-                        dataBaseCreater.insertGoalIntoDataBase("aa","aaa");
-                        dataBaseCreater.insertActivityIntoDataBase("aa","aaa");
+                        dataBaseHandler.insertGoalIntoDataBase("aa","aaa");
+                        dataBaseHandler.insertActivityIntoDataBase("aa","aaa");
                         Toast.makeText(getApplicationContext(), "LOG IN CORRECT", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     } else {
