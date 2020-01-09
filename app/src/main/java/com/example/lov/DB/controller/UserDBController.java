@@ -6,7 +6,6 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.example.lov.model.User;
 
-
 public class UserDBController{
 
     private User user;
@@ -49,10 +48,16 @@ public class UserDBController{
             }
         }
         return false;
-
     }
 
-    public String getActiveUserName(){
-        return user.getUserName();
+    public String getActiveUserName(SQLiteDatabase database){
+        Cursor cursor = database.rawQuery("SELECT * FROM active_user",null);
+        String result_0="";
+        if(cursor.getCount() >= 0){
+            while (cursor.moveToNext()) {
+                result_0 = cursor.getString(0);
+            }
+        }
+        return result_0;
     }
 }

@@ -83,7 +83,7 @@ public class LoginActivity extends AppCompatActivity {
                         dataBaseHandler.insertActivityIntoDataBase("sss","dziala",5,"goal123");
                         dataBaseHandler.insertActivityIntoDataBase("fasfac","dziala",5,"goal123");
                         dataBaseHandler.getAllActivities();     */
-
+                        dataBaseHandler.createActiveUserTable(user);
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     } else {
                         Toast.makeText(getApplicationContext(), "Username or password is incorrect", Toast.LENGTH_SHORT).show();

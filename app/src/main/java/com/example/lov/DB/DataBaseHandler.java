@@ -1,5 +1,6 @@
 package com.example.lov.DB;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -81,14 +82,14 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     }
 
     public boolean insertActivityIntoDataBase(String activityName, String activityUnit, int activityPoints,String userSelectedGoal) throws ParseException{
-        return activitiesDBController.insertActivitiesIntoDataBaseImpl(database, activityName, activityUnit, activityPoints, userDBController.getActiveUserName(),
-                getSingleGoalName(database,userDBController.getActiveUserName(),userSelectedGoal),
+        return activitiesDBController.insertActivitiesIntoDataBaseImpl(database, activityName, activityUnit, activityPoints, userDBController.getActiveUserName(database),
+                getSingleGoalName(database,userDBController.getActiveUserName(database),userSelectedGoal),
                 COLUMN_ACTIVITY_NAME, COLUMN_ACTIVITY_UNIT, COLUMN_ACTIVITY_POINTS,COLUMN_ACTIVITY_USERNAME, COLUMN_ACTIVITY_GOAL_NAME ,ACTIVITY_TABLE_NAME);
     }
 
     public boolean insertGoalIntoDataBase(String goalName, Date startDate, Date endDate ) {
          return goalDBController.insertGoalIntoDataBaseImpl(database, goalName, dateStringConverter.getString(startDate), dateStringConverter.getString(endDate),
-                 userDBController.getActiveUserName(), COLUMN_GOAL_NAME, COLUMN_GOAL_START_DATE,COLUMN_GOAL_END_DATE, COLUMN_GOAL_USERNAME,GOAL_TABLE_NAME);
+                 userDBController.getActiveUserName(database), COLUMN_GOAL_NAME, COLUMN_GOAL_START_DATE,COLUMN_GOAL_END_DATE, COLUMN_GOAL_USERNAME,GOAL_TABLE_NAME);
       }
 
       private String getSingleGoalName(SQLiteDatabase dataBase,String user,String userSelectedGoal)throws ParseException {
@@ -97,7 +98,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
       }
 
       public List<Activity> getAllActivities() {
-          return activitiesDBController.getAllActivities(database, userDBController.getActiveUserName());
+          return activitiesDBController.getAllActivities(database, userDBController.getActiveUserName(database));
       }
 
     public boolean checkUserName(String userName) {
@@ -112,8 +113,13 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         return userDBController.checkPasswordImpl(database, passwordCheck, userName);
     }
 
-    public void goToMain(){
-
+    public void createActiveUserTable(String userName){
+        database.execSQL("DROP TABLE if EXISTS active_user");
+        database.execSQL("CREATE TABLE active_user(active_user_name TEXT PRIMARY KEY)");
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("active_user_name", userName);
+        database.insert("active_user", null, contentValues);
+      //  database.execSQL("INSERT INTO TABLE active_user (active_user_name) VALUES ('"+userName+"')");
     }
 
 }

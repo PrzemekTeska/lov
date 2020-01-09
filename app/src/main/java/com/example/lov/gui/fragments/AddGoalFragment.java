@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.lov.DB.DataBaseHandler;
 import com.example.lov.R;
 import com.example.lov.service.DateStringConverter;
@@ -61,9 +63,13 @@ public class AddGoalFragment extends Fragment implements View.OnClickListener {
                 break;}
             case R.id.add_goal_button:{
                 try {
-                    dataBaseHandler.insertGoalIntoDataBase(nameTextView.getText().toString(),
+                    boolean insert=dataBaseHandler.insertGoalIntoDataBase(nameTextView.getText().toString(),
                             dateStringConverter.getDate(startDateTextView.getText().toString().replaceAll("/","-")),
                             dateStringConverter.getDate(endDateTextView.getText().toString().replaceAll("/","-")));
+                    if(!insert) Toast.makeText(getContext(), "Something went wrong please try again", Toast.LENGTH_LONG).show();
+                    else {
+                        
+                    }
                 }catch (ParseException e){}
                 break;
             }
