@@ -31,6 +31,8 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     private static final String COLUMN_USER_NAME = "user_name";
     private static final String COLUMN_USER_EMAIL = "email";
     private static final String COLUMN_USER_PASSWORD = "password";
+    private static final String COLUMN_USER_AVATAR_PATH = "avatar_path";
+    private static final String COLUMN_USER_POINTS = "user_points";
 
     private static final String ACTIVITY_TABLE_NAME = "activities";
     private static final String COLUMN_ACTIVITY_NAME = "activity_name";
@@ -53,7 +55,8 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE " + USER_TABLE_NAME + "(" + COLUMN_USER_NAME + " TEXT PRIMARY KEY," + COLUMN_USER_EMAIL + " TEXT," + COLUMN_USER_PASSWORD + " TEXT)");
+        db.execSQL("CREATE TABLE " + USER_TABLE_NAME + "(" + COLUMN_USER_NAME + " TEXT PRIMARY KEY," + COLUMN_USER_EMAIL + " TEXT," + COLUMN_USER_PASSWORD + " TEXT,"
+                +COLUMN_USER_AVATAR_PATH+" TEXT,"+COLUMN_USER_POINTS+" INT)");
 
         db.execSQL("CREATE TABLE " + ACTIVITY_TABLE_NAME + "(" + COLUMN_ACTIVITY_NAME + " TEXT PRIMARY KEY," + COLUMN_ACTIVITY_UNIT + " TEXT," + COLUMN_ACTIVITY_POINTS + " INT," + COLUMN_ACTIVITY_USERNAME + " TEXT,"
                 + COLUMN_ACTIVITY_GOAL_NAME+ " TEXT,"
@@ -72,20 +75,20 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     }
 
 
-    public boolean insertUserIntoDataBase(String userName, String email, String password) {
-        return userDBController.insertUserIntoDataBaseImpl(database, userName, email, password, COLUMN_USER_NAME, COLUMN_USER_EMAIL, COLUMN_USER_PASSWORD, USER_TABLE_NAME);
+    public boolean insertUserIntoDataBase(String userName, String email, String password, String avatarPath, int userPoints) {
+        return userDBController.insertUserIntoDataBaseImpl(database, userName, email, password, avatarPath,userPoints,COLUMN_USER_NAME, COLUMN_USER_EMAIL, COLUMN_USER_PASSWORD,
+                COLUMN_USER_AVATAR_PATH,COLUMN_USER_POINTS,USER_TABLE_NAME);
     }
 
     public boolean insertActivityIntoDataBase(String activityName, String activityUnit, int activityPoints,String userSelectedGoal) throws ParseException{
-
-        return activitiesDBController.insertActivitiesIntoDataBaseImpl(database, activityName, activityUnit, activityPoints, userDBController.getUser(),
-                getSingleGoalName(database,userDBController.getUser(),userSelectedGoal),
+        return activitiesDBController.insertActivitiesIntoDataBaseImpl(database, activityName, activityUnit, activityPoints, userDBController.getActiveUserName(),
+                getSingleGoalName(database,userDBController.getActiveUserName(),userSelectedGoal),
                 COLUMN_ACTIVITY_NAME, COLUMN_ACTIVITY_UNIT, COLUMN_ACTIVITY_POINTS,COLUMN_ACTIVITY_USERNAME, COLUMN_ACTIVITY_GOAL_NAME ,ACTIVITY_TABLE_NAME);
     }
 
     public boolean insertGoalIntoDataBase(String goalName, Date startDate, Date endDate ) {
          return goalDBController.insertGoalIntoDataBaseImpl(database, goalName, dateStringConverter.getString(startDate), dateStringConverter.getString(endDate),
-                 userDBController.getUser(), COLUMN_GOAL_NAME, COLUMN_GOAL_START_DATE,COLUMN_GOAL_END_DATE, COLUMN_GOAL_USERNAME,GOAL_TABLE_NAME);
+                 userDBController.getActiveUserName(), COLUMN_GOAL_NAME, COLUMN_GOAL_START_DATE,COLUMN_GOAL_END_DATE, COLUMN_GOAL_USERNAME,GOAL_TABLE_NAME);
       }
 
       private String getSingleGoalName(SQLiteDatabase dataBase,String user,String userSelectedGoal)throws ParseException {
@@ -93,15 +96,9 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         return first.get().getGoalName();
       }
 
-      public List<Activity> getAllActivities() throws ParseException
-      {
-          return activitiesDBController.getAllActivities(database, userDBController.getUser());
-
+      public List<Activity> getAllActivities() {
+          return activitiesDBController.getAllActivities(database, userDBController.getActiveUserName());
       }
-
-
-
-
 
     public boolean checkUserName(String userName) {
         return userDBController.checkUserNameImpl(database, userName);

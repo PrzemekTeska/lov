@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +27,9 @@ public class RegisterActivity extends AppCompatActivity {
     EditText password, passwordRep, userName, email, emailRep;
     TextView goToLogin;
     Button registerBtn;
+    RadioGroup radioGroup;
+    RadioButton radioButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +60,7 @@ public class RegisterActivity extends AppCompatActivity {
         password = findViewById(R.id.password);
         passwordRep = findViewById(R.id.repPassword);
         goToLogin = findViewById(R.id.textView6);
+     //   radioGroup = findViewById(R.id.radioGroup);
         dataBaseHandler = new DataBaseHandler(this);
     }
 
@@ -72,6 +78,8 @@ public class RegisterActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Fields are empty", Toast.LENGTH_SHORT).show();
         else if (user.length() < 6)
             Toast.makeText(getApplicationContext(), "Username is too short", Toast.LENGTH_SHORT).show();
+        else if (user.length() > 15)
+            Toast.makeText(getApplicationContext(), "Username is too long", Toast.LENGTH_SHORT).show();
         else if (!matcher.matches())
             Toast.makeText(getApplicationContext(), "Its not a real email", Toast.LENGTH_SHORT).show();
         else if (pass.length() < 6)
@@ -86,11 +94,14 @@ public class RegisterActivity extends AppCompatActivity {
                 if (checkUser) {
                     Boolean checkEmail = dataBaseHandler.checkEmail(mail);
                     if (checkEmail) {
-                        Boolean insert = dataBaseHandler.insertUserIntoDataBase(user, mail, SHA1(pass));
+                        String avatar= avatarPath();
+                        Boolean insert = dataBaseHandler.insertUserIntoDataBase(user, mail, SHA1(pass),avatar,0);
                         if (!insert)
                             Toast.makeText(getApplicationContext(), "Something went wrong please try again", Toast.LENGTH_LONG).show();
                         else {
                             Toast.makeText(getApplicationContext(), "Account created you can login now", Toast.LENGTH_SHORT).show();
+
+
                             startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                         }
                     } else
@@ -101,6 +112,17 @@ public class RegisterActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Something went wrong please try again", Toast.LENGTH_LONG).show();
             }
         }
+    }
+
+
+    private String avatarPath()
+    {
+     //   int selectedId = radioGroup.getCheckedRadioButtonId();
+      //  radioButton = (RadioButton) findViewById(selectedId);
+
+     //    if(radioButton.getId()==0)return "path";
+        return "path";
+
     }
 
     public static String SHA1(String text) throws NoSuchAlgorithmException, UnsupportedEncodingException {
