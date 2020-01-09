@@ -112,5 +112,8 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         return userDBController.checkPasswordImpl(database, passwordCheck, userName);
     }
 
+    public void goToMain(){
+
+    }
 
 }

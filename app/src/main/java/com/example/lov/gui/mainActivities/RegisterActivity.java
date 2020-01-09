@@ -28,7 +28,7 @@ public class RegisterActivity extends AppCompatActivity {
     TextView goToLogin;
     Button registerBtn;
     RadioGroup radioGroup;
-    RadioButton radioButton;
+    RadioButton radioButton1, radioButton2;
 
 
     @Override
@@ -60,7 +60,9 @@ public class RegisterActivity extends AppCompatActivity {
         password = findViewById(R.id.password);
         passwordRep = findViewById(R.id.repPassword);
         goToLogin = findViewById(R.id.textView6);
-     //   radioGroup = findViewById(R.id.radioGroup);
+        radioGroup = findViewById(R.id.radioGroup);
+        radioButton1 = findViewById(R.id.radio1);
+        radioButton2 = findViewById(R.id.radio2);
         dataBaseHandler = new DataBaseHandler(this);
     }
 
@@ -86,6 +88,8 @@ public class RegisterActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Password is too short", Toast.LENGTH_SHORT).show();
         else if (pass.length() > 15)
             Toast.makeText(getApplicationContext(), "Password is too long", Toast.LENGTH_SHORT).show();
+        else if (radioGroup.getCheckedRadioButtonId()==-1)
+            Toast.makeText(getApplicationContext(), "Choose an avatar", Toast.LENGTH_SHORT).show();
         else if (user.equals(pass))
             Toast.makeText(getApplicationContext(), "Username and password cant be the same", Toast.LENGTH_SHORT).show();
         else if (pass.equals(passRep) && mail.equals(mailRep)) {
@@ -114,14 +118,11 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }
 
-
-    private String avatarPath()
-    {
-     //   int selectedId = radioGroup.getCheckedRadioButtonId();
-      //  radioButton = (RadioButton) findViewById(selectedId);
-
-     //    if(radioButton.getId()==0)return "path";
-        return "path";
+    private String avatarPath() {
+        int selectedId = radioGroup.getCheckedRadioButtonId();
+        RadioButton radioButton = findViewById(selectedId);
+        if(radioButton==radioButton1)return "drawable/profile1.jpg";
+        return "drawable/profile2.jpg";
 
     }
 

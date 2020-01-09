@@ -3,6 +3,7 @@ package com.example.lov.DB.controller;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+
 import com.example.lov.model.User;
 
 
@@ -10,9 +11,9 @@ public class UserDBController{
 
     private User user;
 
-    public boolean insertUserIntoDataBaseImpl(SQLiteDatabase database, String userName ,String email, String password,String avatarPath,int points,
+    public boolean insertUserIntoDataBaseImpl(SQLiteDatabase database, String userName , String email, String password, String avatarPath, int points,
                                               final String COLUMN_USER_NAME, final String COLUMN_USER_EMAIL, final String COLUMN_USER_PASSWORD,
-                                              final String COLUMN_USER_AVATAR_PATH, final String COLUMN_USER_POINTS,final String USER_TABLE_NAME) {
+                                              final String COLUMN_USER_AVATAR_PATH, final String COLUMN_USER_POINTS, final String USER_TABLE_NAME) {
 
         ContentValues contentValues = new ContentValues();
         contentValues.put(COLUMN_USER_NAME, userName);

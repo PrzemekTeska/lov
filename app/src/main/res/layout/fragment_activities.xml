@@ -7,57 +7,21 @@
         android:layout_height="wrap_content"
         android:orientation="vertical" />
 
-    <TextView
-        android:id="@+id/stars_number"
-        android:layout_width="wrap_content"
+
+    <ListView
+        android:id="@+id/list_view_activities"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="5"
-        android:textSize="20sp"
-        android:textStyle="bold"
-
-        android:layout_marginLeft="5dp"
-        />
-
-    <ImageView
-        android:id="@+id/star_icon"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:background="@drawable/star_icon"
-        android:layout_toRightOf="@+id/stars_number"
-        android:layout_toEndOf="@id/stars_number"/>
-
-    <TextView
-        android:id="@+id/activity_fragment_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Activity text"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_toRightOf="@+id/star_icon"
-        android:layout_toLeftOf="@id/activity_completed"
-        android:layout_marginTop="5dp"/>
+        android:dividerHeight="20.0sp"/>/>
 
     <Button
-        android:id="@+id/activity_completed"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_toLeftOf="@+id/activity_failed"
-        android:background="@drawable/complete_icon"/>
-    <Button
-        android:id="@+id/activity_failed"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentRight="true"
-        android:background="@drawable/failed_icon"
-        android:layout_marginLeft="15dp"/>
-
-    <Button
-        android:id="@+id/add_activity_button"
+        android:id="@+id/go_to_add_activity_button"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
         android:background="@drawable/ic_add_circle_black_24dp"
+        android:onClick="logIn"
         android:layout_marginBottom="10dp"/>
 
 </RelativeLayout>
