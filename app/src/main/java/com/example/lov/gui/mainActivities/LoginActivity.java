@@ -1,4 +1,4 @@
-package com.example.lov.gui;
+package com.example.lov.gui.mainActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,8 +10,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.lov.DB.DataBaseCreater;
+import com.example.lov.DB.DataBaseHandler;
 import com.example.lov.R;
+import com.example.lov.service.DateStringConverter;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
@@ -19,7 +20,8 @@ import java.security.NoSuchAlgorithmException;
 
 public class LoginActivity extends AppCompatActivity {
 
-    DataBaseCreater dataBaseCreater;
+    private DateStringConverter dateStringConverter=new DateStringConverter();
+    DataBaseHandler dataBaseHandler;
     EditText password, userName;
     Button loginBtn;
     TextView goToRegister;
@@ -37,9 +39,9 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        loginBtn.setOnClickListener(new View.OnClickListener() {
+        loginBtn.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View view) {
+            public void onClick(View view){
                 logIn(view);
             }
         });
@@ -51,23 +53,37 @@ public class LoginActivity extends AppCompatActivity {
         goToRegister = findViewById(R.id.textView6);
         userName = findViewById(R.id.userName);
         password = findViewById(R.id.password);
-        dataBaseCreater = new DataBaseCreater(this);
+        dataBaseHandler = new DataBaseHandler(this);
     }
 
     public void logIn(View view) {
         String user = userName.getText().toString();
         String pass = password.getText().toString();
+        //  Date date1=null;
+        //  Date date2=null;
+        //   try {
+        //   date1= dateStringConverter.getDate("07-01-2000");
+        //    date2= dateStringConverter.getDate("03-05-2001");
+        //   String str= dateStringConverter.getString(date1);
+
+        //  }catch (Exception e){}
+
         if (user.equals("") || pass.equals(""))
             Toast.makeText(getApplicationContext(), "Fields are empty", Toast.LENGTH_SHORT).show();
         else {
             try {
-                Boolean checkUser = dataBaseCreater.checkUserName(user);
+                Boolean checkUser = dataBaseHandler.checkUserName(user);
                 if (!checkUser) {
-                    Boolean checkPass = dataBaseCreater.checkPassword(SHA1(pass), user);
+                    Boolean checkPass = dataBaseHandler.checkPassword(SHA1(pass), user);
                     if (checkPass) {
-                        dataBaseCreater.insertGoalIntoDataBase("aa","aaa");
-                        dataBaseCreater.insertActivityIntoDataBase("aa","aaa");
                         Toast.makeText(getApplicationContext(), "LOG IN CORRECT", Toast.LENGTH_SHORT).show();
+
+                      //  dataBaseHandler.insertGoalIntoDataBase("goal123",date1,date2);
+                       // dataBaseHandler.insertActivityIntoDataBase("sss","dziala",5,"goal123");
+                       // dataBaseHandler.insertActivityIntoDataBase("fasfac","dziala",5,"bbbbbb");
+
+                        dataBaseHandler.getAllActivities();
+
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     } else {
                         Toast.makeText(getApplicationContext(), "Username or password is incorrect", Toast.LENGTH_SHORT).show();
@@ -75,7 +91,6 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(getApplicationContext(), "User doesnt exist", Toast.LENGTH_SHORT).show();
                 }
-
             } catch (Exception e) {
                 Toast.makeText(getApplicationContext(), "Something went wrong please try again", Toast.LENGTH_LONG).show();
             }

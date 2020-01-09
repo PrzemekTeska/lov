@@ -1,4 +1,4 @@
-package com.example.lov.gui;
+package com.example.lov.gui.mainActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.lov.DB.DataBaseCreater;
+import com.example.lov.DB.DataBaseHandler;
 import com.example.lov.R;
 
 import java.io.UnsupportedEncodingException;
@@ -21,7 +21,7 @@ import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    DataBaseCreater dataBaseCreater;
+    DataBaseHandler dataBaseHandler;
     EditText password, passwordRep, userName, email, emailRep;
     TextView goToLogin;
     Button registerBtn;
@@ -55,7 +55,7 @@ public class RegisterActivity extends AppCompatActivity {
         password = findViewById(R.id.password);
         passwordRep = findViewById(R.id.repPassword);
         goToLogin = findViewById(R.id.textView6);
-        dataBaseCreater = new DataBaseCreater(this);
+        dataBaseHandler = new DataBaseHandler(this);
     }
 
     public void register(View view) {
@@ -76,15 +76,17 @@ public class RegisterActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Its not a real email", Toast.LENGTH_SHORT).show();
         else if (pass.length() < 6)
             Toast.makeText(getApplicationContext(), "Password is too short", Toast.LENGTH_SHORT).show();
+        else if (pass.length() > 15)
+            Toast.makeText(getApplicationContext(), "Password is too long", Toast.LENGTH_SHORT).show();
         else if (user.equals(pass))
             Toast.makeText(getApplicationContext(), "Username and password cant be the same", Toast.LENGTH_SHORT).show();
         else if (pass.equals(passRep) && mail.equals(mailRep)) {
             try {
-                Boolean checkUser = dataBaseCreater.checkUserName(user);
+                Boolean checkUser = dataBaseHandler.checkUserName(user);
                 if (checkUser) {
-                    Boolean checkEmail = dataBaseCreater.checkEmail(mail);
+                    Boolean checkEmail = dataBaseHandler.checkEmail(mail);
                     if (checkEmail) {
-                        Boolean insert = dataBaseCreater.insertUserIntoDataBase(user, mail, SHA1(pass));
+                        Boolean insert = dataBaseHandler.insertUserIntoDataBase(user, mail, SHA1(pass));
                         if (!insert)
                             Toast.makeText(getApplicationContext(), "Something went wrong please try again", Toast.LENGTH_LONG).show();
                         else {

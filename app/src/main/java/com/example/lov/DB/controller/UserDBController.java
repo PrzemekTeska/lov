@@ -32,7 +32,6 @@ public class UserDBController{
     public boolean checkPasswordImpl(SQLiteDatabase database,String passwordCheck, String userName) {
         Cursor cursor = database.rawQuery("SELECT password FROM user WHERE user_name = ? and password=?", new String[]{userName, passwordCheck});
         setUser(userName);
-
         return !(cursor.getCount() <= 0);
     }
 
