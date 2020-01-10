@@ -42,12 +42,10 @@ public class ArrayAdapterActivity extends BaseAdapter implements ListAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
-
         if(view == null){
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.activity_list_item,null);
         }
-
         TextView activityWeight = view.findViewById(R.id.activity_weight_text);
         TextView activityUnit =  view.findViewById(R.id.activity_unit_text);
         TextView activityText = view.findViewById(R.id.activity_text);
