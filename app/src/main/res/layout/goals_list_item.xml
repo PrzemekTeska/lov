@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/goal_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@id/goal_start_date_text"
+        android:text="EXAMPLEEXAMPLEEXAMPLE"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/goal_start_date_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SD: "
+        android:layout_toLeftOf="@+id/goal_start_date"
+        android:layout_above="@id/goal_start_date_text"/>
+
+    <TextView
+        android:id="@+id/goal_start_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="09/01/2020"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp"/>
+
+    <TextView
+        android:id="@+id/goal_end_date_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ED: "
+        android:layout_toLeftOf="@id/goal_end_date"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/goal_end_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="09/01/2021"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="20dp"/>
+
+</RelativeLayout>

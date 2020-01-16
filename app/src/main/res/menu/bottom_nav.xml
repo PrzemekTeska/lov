@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/nav_goal"
+        android:icon="@drawable/ic_flag_black_24dp"
+        android:title="Goals"/>
+
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/ic_account_circle_black_24dp"
+        android:title="Profile"/>
+
+    <item
+        android:id="@+id/nav_activity"
+        android:icon="@drawable/ic_directions_run_black_24dp"
+        android:title="Acitivities"/>
+
+    <item
+        android:id="@+id/nav_progress"
+        android:icon="@drawable/ic_trending_up_black_24dp"
+        android:title="Progress"/>
+</menu>
