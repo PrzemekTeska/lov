@@ -135,4 +135,14 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         return false;
     }
 
+    public boolean updateGoal(Goal insertGoal){
+        if(goalDBController.updateGoal(database,insertGoal))return true;
+        return false;
+    }
+
+//    public boolean deleteGoal(Goal deleteGoal){
+//
+//
+//    }
+
 }

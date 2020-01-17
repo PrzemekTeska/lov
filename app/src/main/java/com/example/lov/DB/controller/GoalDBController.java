@@ -43,4 +43,19 @@ public class GoalDBController {
         return goalList;
     }
 
+    public boolean updateGoal(SQLiteDatabase database,Goal goal){
+        String startDate= dateStringConverter.getString(goal.getStartDate());
+        String endDate= dateStringConverter.getString(goal.getEndDate());
+        try{
+            Cursor cursor = database.rawQuery("UPDATE goals SET goal_start_date = ?,goal_end_date =? WHERE goal_name=? AND username =?",
+                    new String[]{startDate,endDate,goal.getGoalName(),goal.getUserName()});
+            return !(cursor.getCount() > 0);
+
+        }catch (Exception e){return false;}
+
+    }
+
+//    public boolean deleteGoal(SQLiteDatabase database,Goal goal){
+//
+//    }
 }
