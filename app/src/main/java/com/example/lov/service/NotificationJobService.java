@@ -43,12 +43,12 @@ public class NotificationJobService extends JobService {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                showNotification("You have failed the following goals: ", getFailedGoals());
+                if(getFailedGoals()!=null)showNotification("You have failed the following goals: ", getFailedGoals());
                 break;
 
             case 111:
                 try {
-                    showNotification("Reminder ", getReminder());
+                    if(getReminder()!=null) showNotification("Reminder ", getReminder());
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -56,7 +56,7 @@ public class NotificationJobService extends JobService {
 
             case 100:
                 try {
-                    showNotification("You still can do it! Those goals end today: ", getMotivation());
+                    if(getMotivation()!=null) showNotification("You still can do it! Those goals end today: ", getMotivation());
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
