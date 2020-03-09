@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EDIT YOUR GOAL"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/edit_goal_name"
+        android:layout_marginBottom="40dp"/>
+
+
+    <TextView
+        android:id="@+id/edit_goal_name"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:hint="New name"
+        android:layout_above="@id/edit_start_date_text"
+        android:layout_alignLeft="@id/edit_start_date_text"
+        android:layout_marginBottom="40dp"/>
+
+    <TextView
+        android:id="@+id/edit_start_date_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New start date:"
+        android:layout_above="@+id/edit_end_date_text"
+        android:layout_marginBottom="60dp"
+        android:layout_alignRight="@id/edit_end_date_text"
+        android:paddingBottom="10dp"/>
+
+    <Button
+        android:id="@+id/edit_start_date_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/ic_date_range_black_24dp"
+        android:layout_toRightOf="@+id/edit_start_date_text"
+        android:layout_alignBottom="@+id/edit_start_date_text"
+        android:layout_marginLeft="30dp"/>
+
+    <TextView
+        android:id="@+id/edited_start_date_view"
+        android:layout_width="80dp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/edit_start_date_button"
+        android:layout_alignBottom="@id/edit_start_date_text"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="40dp"
+        android:background="@android:color/white"/>
+
+    <TextView
+        android:id="@+id/edit_end_date_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New end date:"
+        android:layout_above="@+id/apply_edit_goal_button"
+        android:layout_marginBottom="50dp"
+        android:layout_marginLeft="50dp"
+        android:paddingBottom="10dp"/>
+
+    <Button
+        android:id="@+id/edit_end_date_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/ic_date_range_black_24dp"
+        android:layout_toRightOf="@+id/edit_end_date_text"
+        android:layout_alignBottom="@+id/edit_end_date_text"
+        android:layout_marginLeft="30dp"/>
+
+    <TextView
+        android:id="@+id/edited_end_date_view"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:layout_toRightOf="@id/edit_end_date_button"
+        android:layout_alignBottom="@id/edit_end_date_text"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="40dp"
+        android:background="@android:color/white"/>
+
+    <Button
+        android:id="@+id/apply_edit_goal_button"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="APPLY CHANGES"
+        android:textSize="15dp"
+        android:background="#4AD285"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp"/>
+</RelativeLayout>

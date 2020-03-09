@@ -29,7 +29,6 @@ public class GoalDBController {
 
     public List<Goal> getAllGoals(SQLiteDatabase db, String username)throws ParseException {
         goalList=new ArrayList<>();
-        String result = "";
         String query = "Select*FROM goals WHERE username LIKE '"+username+"'";
         Cursor cursor = db.rawQuery(query, null);
         while (cursor.moveToNext()) {
@@ -52,8 +51,9 @@ public class GoalDBController {
             return !(cursor.getCount() > 0);
 
         }catch (Exception e){return false;}
-
     }
+
+
 
 //    public boolean deleteGoal(SQLiteDatabase database,Goal goal){
 //

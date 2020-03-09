@@ -60,14 +60,15 @@
         android:layout_alignRight="@id/weight_text"/>
 
     <EditText
+        android:id="@+id/activity_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
+        android:layout_above="@id/weight_text"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="30dp"
         android:layout_toEndOf="@id/unit_amount_text"
         android:layout_toRightOf="@id/unit_amount_text"
-        android:layout_above="@id/weight_text"
-        android:layout_marginBottom="30dp"
-        android:layout_marginLeft="10dp"/>
+        android:textSize="20dp" />
 
 
 

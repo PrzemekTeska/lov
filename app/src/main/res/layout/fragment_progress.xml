@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/prizes_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="PRIZES"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:background="@android:color/white"/>
+
+    <ListView
+        android:id="@+id/prizes_listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/penalties_text_view"
+        android:layout_alignTop="@+id/prizes_text_view"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:id="@+id/penalties_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="PENALTIES"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:background="@android:color/white"
+        android:layout_centerVertical="true"/>
+
+    <ListView
+        android:id="@+id/penalties_listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/penalties_text_view"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="20dp" />
+
+    <Button
+        android:id="@+id/go_to_add_progress_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:background="@drawable/ic_add_circle_black_24dp"
+        android:layout_marginBottom="10dp"/>
+
+</RelativeLayout>

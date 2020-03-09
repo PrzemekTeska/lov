@@ -1,9 +1,10 @@
-package com.example.lov.gui.fragments;
+package com.example.lov.gui.fragments.activity;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -18,7 +19,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import java.util.ArrayList;
 
-public class ActivitiesFragment extends Fragment implements View.OnClickListener{
+public class ActivitiesFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemClickListener {
 
     private DataBaseHandler dataBaseHandler;
     private ListView listViewActivities;
@@ -43,7 +44,7 @@ public class ActivitiesFragment extends Fragment implements View.OnClickListener
         ArrayAdapterActivity arrayAdapterActivity = new ArrayAdapterActivity(activities, getActivity());
 
         listViewActivities.setAdapter(arrayAdapterActivity);
-
+        listViewActivities.setOnItemClickListener(this);
         return rootView;
     }
 
@@ -65,4 +66,12 @@ public class ActivitiesFragment extends Fragment implements View.OnClickListener
         transaction.commit();
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        Fragment fragment=null;
+        Activity activity =(Activity) listViewActivities.getItemAtPosition(i);
+        fragment = new EditActivityFragment(activity);
+        replaceFragment(fragment);
+
+    }
 }

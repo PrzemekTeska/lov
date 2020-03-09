@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/prizes_spinner_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Prizes templates:"
+        android:layout_above="@id/penalties_spinner_text_view"
+        android:layout_alignLeft="@id/penalties_spinner_text_view"
+        android:layout_marginBottom="20dp"/>
+
+    <Spinner
+        android:id="@+id/prizes_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/prizes_spinner_text_view"
+        android:layout_alignBottom="@+id/prizes_spinner_text_view"/>
+
+    <TextView
+        android:id="@+id/penalties_spinner_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/add_progress_name"
+        android:text="Penalties tepmlates:"
+        android:layout_alignLeft="@+id/add_progress_name"
+        android:layout_marginBottom="20dp" />
+
+    <Spinner
+        android:id="@+id/penalties_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/penalties_spinner_text_view"
+        android:layout_alignBottom="@+id/penalties_spinner_text_view"/>
+
+
+    <EditText
+        android:id="@+id/add_progress_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/add_progress_radio_group"
+        android:layout_alignLeft="@+id/add_progress_radio_group"
+        android:layout_marginBottom="50dp"
+        android:hint="Name" />
+
+    <RadioGroup
+        android:id="@+id/add_progress_radio_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/add_progress_button"
+        android:layout_alignLeft="@+id/add_progress_button"
+        android:layout_marginBottom="30dp">
+
+        <RadioButton
+            android:id="@+id/add_prize_radio_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Prize"
+            android:layout_marginBottom="20dp"/>
+
+        <RadioButton
+            android:id="@+id/add_penalty_radio_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Penalty"/>
+
+    </RadioGroup>
+
+
+    <Button
+        android:id="@+id/add_progress_button"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="#4AD285"
+        android:text="ADD"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

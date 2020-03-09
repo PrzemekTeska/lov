@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#068D9D"
-    tools:context=".LoginActivity">
+    tools:context=".gui.mainActivities.LoginActivity">
 
     <ImageView
         android:id="@+id/top_bar"
@@ -14,7 +14,22 @@
         android:background="@android:color/white"/>
 
     <ImageView
-        android:id="@+id/user_stars"
+        android:id="@+id/user_profile_image_main"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
+
+
+    <TextView
+        android:id="@+id/userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/top_bar"
+        android:layout_centerHorizontal="true"
+        android:textSize="18sp"
+        android:text="USERNAME"/>
+
+    <ImageView
+        android:id="@+id/user_stars_image"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:background="@drawable/ic_star_black_24dp"
@@ -23,10 +38,11 @@
         android:layout_marginBottom="4dp"/>
 
     <TextView
+        android:id="@+id/user_points"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/top_bar"
-        android:layout_toLeftOf="@id/user_stars"
+        android:layout_toLeftOf="@id/user_stars_image"
         android:text="20"
         android:textSize="30dp"
         android:layout_marginBottom="4dp"/>

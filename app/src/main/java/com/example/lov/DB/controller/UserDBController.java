@@ -79,8 +79,8 @@ public class UserDBController{
     }
 
     public boolean updateUser(SQLiteDatabase database,User insertUser){
-        Cursor cursor = database.rawQuery("UPDATE user SET email = ?,password =?,avatar_path=? WHERE user_name=?",
-                new String[]{insertUser.getEmail(),insertUser.getPassword(),insertUser.getAvatar(),insertUser.getUserName()});
+        Cursor cursor = database.rawQuery("UPDATE user SET email = ?,password =?,avatar_path=?,user_points=? WHERE user_name=?",
+                new String[]{insertUser.getEmail(),insertUser.getPassword(),insertUser.getAvatar(),String.valueOf(insertUser.getPoints()),insertUser.getUserName()});
         return !(cursor.getCount() > 0);
     }
 }

@@ -2,6 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
+
+    <TextView
+        android:id="@+id/activity_amount_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/activity_unit_text"
+        android:text="5"
+        android:textSize="20dp" />
     <TextView
         android:id="@+id/activity_weight_text"
         android:layout_width="wrap_content"
@@ -23,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/star_icon"
-        android:layout_toLeftOf="@id/activity_unit_text"
+        android:layout_toLeftOf="@id/activity_amount_text"
         android:text="EXAMPLEEXAPMLEEXAMPLEEX"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
@@ -34,32 +42,9 @@
         android:id="@+id/activity_unit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toLeftOf="@id/activity_completed"
+        android:layout_alignParentRight="true"
         android:textSize="20dp"
         android:text="kg"/>
 
-    <Button
-        android:id="@+id/activity_completed"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_toLeftOf="@id/activity_failed"
-        android:background="@drawable/ic_check_circle_black_24dp"
-        android:layout_marginRight="5dp"/>
-
-    <Button
-        android:id="@+id/activity_failed"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_toLeftOf="@id/modify_activity"
-        android:background="@drawable/ic_remove_circle_black_24dp"
-        android:layout_marginRight="5dp"/>
-
-    <Button
-        android:id="@+id/modify_activity"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="5dp"
-        android:background="@drawable/ic_edit_black_24dp"/>
 
 </RelativeLayout>

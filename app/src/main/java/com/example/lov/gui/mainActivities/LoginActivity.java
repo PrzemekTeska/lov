@@ -17,7 +17,6 @@ import com.example.lov.service.DateStringConverter;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Date;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -60,15 +59,6 @@ public class LoginActivity extends AppCompatActivity {
     public void logIn(View view) {
         String user = userName.getText().toString();
         String pass = password.getText().toString();
-
-        /*  Date date1=null;
-         Date date2=null;
-          try {
-          date1= dateStringConverter.getDate("07-01-2000");
-           date2= dateStringConverter.getDate("03-05-2001");
-           String str= dateStringConverter.getString(date1);
-          }catch (Exception e){}    */
-
         if (user.equals("") || pass.equals(""))
             Toast.makeText(getApplicationContext(), "Fields are empty", Toast.LENGTH_SHORT).show();
         else {
@@ -78,11 +68,6 @@ public class LoginActivity extends AppCompatActivity {
                     Boolean checkPass = dataBaseHandler.checkPassword(SHA1(pass), user);
                     if (checkPass) {
                         Toast.makeText(getApplicationContext(), "LOG IN CORRECT", Toast.LENGTH_SHORT).show();
-
-                   /*     dataBaseHandler.insertGoalIntoDataBase("goal123",date1,date2);
-                        dataBaseHandler.insertActivityIntoDataBase("sss","dziala",5,"goal123");
-                        dataBaseHandler.insertActivityIntoDataBase("fasfac","dziala",5,"goal123");
-                        dataBaseHandler.getAllActivities();     */
                         dataBaseHandler.createActiveUserTable(user);
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     } else {
@@ -106,5 +91,8 @@ public class LoginActivity extends AppCompatActivity {
             sb.append(String.format("%02x", b));
         }
         return sb.toString();
+    }
+    @Override
+    public void onBackPressed(){
     }
 }

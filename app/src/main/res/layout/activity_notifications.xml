@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:background="#068D9D">
+
+    <ImageView
+        android:id="@+id/progress_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@android:color/white"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        android:text="NOTIFICATIONS"
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/ic_chevron_left_black_24dp" />
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/notifications_radio_group"
+        android:layout_marginBottom="30dp"
+        android:textSize="25dp"
+        android:text="Choose amount of daily notifications:"/>
+
+
+    <RadioGroup
+        android:id="@+id/notifications_radio_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/apply_edit_notifications_button"
+        android:layout_alignLeft="@+id/apply_edit_notifications_button"
+        android:layout_marginBottom="100dp">
+
+        <RadioButton
+            android:id="@+id/notifications_none"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:checked="true"
+            android:text="None"
+            android:textSize="20dp" />
+
+        <RadioButton
+            android:id="@+id/notifications_once"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="Rare"
+            android:textSize="20dp" />
+
+        <RadioButton
+            android:id="@+id/notifications_twice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Often"
+            android:textSize="20dp" />
+
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/apply_edit_notifications_button"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="APPLY"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="#4AD285"
+        android:layout_marginBottom="100dp"/>
+
+
+
+
+</RelativeLayout>

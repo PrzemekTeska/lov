@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/penalty_status_text_view"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="STATUS"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:layout_alignParentRight="true"/>
+
+    <TextView
+        android:id="@+id/penalty_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/penalty_status_text_view"
+        android:textSize="20dp"
+        android:text="PENALTY NAME"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/penalty_assigned_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Assigned goal:"
+        android:layout_alignTop="@+id/prize_name"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="70dp"/>
+
+    <TextView
+        android:id="@+id/goal_name_penalties"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/penalty_name"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="25dp"
+        android:layout_toRightOf="@+id/penalty_assigned_text_view"
+        android:text="GOAL NAME" />
+
+</RelativeLayout>

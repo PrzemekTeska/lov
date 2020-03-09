@@ -7,11 +7,21 @@ public class Goal {
     private String goalName;
     private Date startDate;
     private Date endDate;
+    private String userName;
 
-    public Goal(String goalName, Date startDate, Date endDate, String activityName) {
+    public Goal(String goalName, Date startDate, Date endDate, String userName) {
         this.goalName = goalName;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.userName=userName;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getGoalName() {

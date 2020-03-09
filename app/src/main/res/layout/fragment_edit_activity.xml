@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/newname_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New name: "
+        android:textSize="18sp"
+        android:layout_alignLeft="@+id/apply_edit_activity_button"
+        android:layout_above="@+id/newunit_text_view"
+        android:layout_marginBottom="30dp"/>
+
+    <EditText
+        android:id="@+id/edit_activity_name"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/newname_text_view"
+        android:layout_alignBottom="@+id/newname_text_view"/>
+
+    <TextView
+        android:id="@+id/newunit_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New unit: "
+        android:textSize="18sp"
+        android:layout_alignLeft="@+id/apply_edit_activity_button"
+        android:layout_above="@+id/newamount_text_view"
+        android:layout_marginBottom="30dp"/>
+
+    <EditText
+        android:id="@+id/edit_activity_unit"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/newunit_text_view"
+        android:layout_alignBottom="@+id/newunit_text_view"/>
+
+    <TextView
+        android:id="@+id/newamount_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New amount: "
+        android:textSize="18sp"
+        android:layout_alignLeft="@+id/apply_edit_activity_button"
+        android:layout_above="@+id/newweight_text_view"
+        android:layout_marginBottom="30dp" />
+
+    <EditText
+        android:id="@+id/edit_activity_amount"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/newamount_text_view"
+        android:layout_alignBottom="@+id/newamount_text_view"/>
+
+    <TextView
+        android:id="@+id/newweight_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New weight: "
+        android:textSize="18sp"
+        android:layout_alignLeft="@+id/apply_edit_activity_button"
+        android:layout_above="@+id/apply_edit_activity_button"
+        android:layout_marginBottom="30dp"/>
+
+    <Spinner
+        android:id="@+id/edit_weight_spinner"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/newweight_text_view"
+        android:layout_alignBottom="@+id/newweight_text_view"/>
+
+    <Button
+        android:id="@+id/apply_edit_activity_button"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="APPLY CHANGES"
+        android:background="#4AD285"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="180dp"/>
+    <Button
+        android:id="@+id/delete_activity_button"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="DELETE ACTIVITY"
+        android:background="#4AD285"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="110dp"/>
+
+    <Button
+        android:id="@+id/complete_activity_button"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:text="ACTIVITY COMPLETE"
+        android:background="#4AD285"
+        android:layout_marginLeft="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"/>
+
+    <Button
+        android:id="@+id/failed_activity_button"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:text="ACTIVITY FAILED"
+        android:background="#4AD285"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"
+        />
+
+</RelativeLayout>

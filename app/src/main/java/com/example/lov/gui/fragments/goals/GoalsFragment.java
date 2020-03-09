@@ -1,15 +1,18 @@
-package com.example.lov.gui.fragments;
+package com.example.lov.gui.fragments.goals;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.lov.DB.DataBaseHandler;
 import com.example.lov.R;
 import com.example.lov.gui.arrayadapters.ArrayAdapterGoal;
+import com.example.lov.gui.fragments.goals.AddGoalFragment;
+import com.example.lov.gui.fragments.goals.CheckGoalFragment;
 import com.example.lov.model.Goal;
 
 import java.text.ParseException;
@@ -20,7 +23,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-public class GoalsFragment extends Fragment implements View.OnClickListener{
+public class GoalsFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemClickListener {
 
     private ListView listViewGoals;
     private ArrayList<Goal> goals = new ArrayList<>();
@@ -44,6 +47,7 @@ public class GoalsFragment extends Fragment implements View.OnClickListener{
         ArrayAdapterGoal arrayAdapterGoal = new ArrayAdapterGoal(goals, getActivity());
 
         listViewGoals.setAdapter(arrayAdapterGoal);
+        listViewGoals.setOnItemClickListener(this);
 
         return rootView;
     }
@@ -64,5 +68,13 @@ public class GoalsFragment extends Fragment implements View.OnClickListener{
         transaction.replace(R.id.fragment_container, someFragment);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Fragment fragment = null;
+        Goal goal =(Goal) listViewGoals.getItemAtPosition(position);
+        fragment = new CheckGoalFragment(goal);
+        replaceFragment(fragment);
     }
 }

@@ -6,12 +6,22 @@ public class Activity {
     private String activityUnit;
     private String goalNameFK;
     private int activityPoints;
+    private int activityAmount;
 
-    public Activity(String activityName, String activityUnit, int activityPoints, String goalNameFK) {
+    public Activity(String activityName, String activityUnit, int activityPoints,int activityAmount ,String goalNameFK) {
         this.activityName = activityName;
         this.activityUnit = activityUnit;
         this.activityPoints = activityPoints;
+        this.activityAmount=activityAmount;
         this.goalNameFK = goalNameFK;
+    }
+
+    public int getActivityAmount() {
+        return activityAmount;
+    }
+
+    public void setActivityAmount(int activityAmount) {
+        this.activityAmount = activityAmount;
     }
 
     public String getActivityName() {

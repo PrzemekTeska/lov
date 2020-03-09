@@ -4,13 +4,12 @@
 
 
     <ImageView
-        android:id="@+id/user_profile_image"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:id="@+id/user_profile_image_new"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_above="@+id/edit_profile_button"
-        android:layout_marginBottom="60dp"
-        android:background="@drawable/profile1"/>
+        android:layout_marginTop="60dp" />
 
     <Button
         android:id="@+id/edit_profile_button"
@@ -21,6 +20,16 @@
         android:textSize="18sp"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="100dp"/>
+        android:layout_marginBottom="180dp"/>
+    <Button
+        android:id="@+id/edit_notifications_button"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="#4AD285"
+        android:text="EDIT NOTIFICATIONS"
+        android:textSize="18sp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="130dp"/>
 
 </RelativeLayout>

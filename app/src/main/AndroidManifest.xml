@@ -3,6 +3,8 @@
     package="com.example.lov">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="true"
@@ -13,6 +15,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".gui.mainActivities.MainActivity" android:windowSoftInputMode="adjustPan|stateHidden"></activity>
         <activity android:name=".gui.mainActivities.RegisterActivity" android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity android:name=".gui.mainActivities.NotificationsActivity" android:windowSoftInputMode="adjustPan|stateHidden"/>
         <activity android:name=".gui.mainActivities.LoginActivity" android:windowSoftInputMode="adjustPan|stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,6 +23,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service
+            android:name=".service.NotificationJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
     </application>
 
 </manifest>
+
